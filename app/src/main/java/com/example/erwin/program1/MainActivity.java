@@ -23,35 +23,29 @@ public class MainActivity extends AppCompatActivity {
         TextView displayTV = findViewById(R.id.displayTV);
         EditText displayET = findViewById(R.id.displayET);
         String contents = displayET.getText().toString();
-        List<String> contentsList = new ArrayList<>();
-        contentsList.add(contents);
 
-        switch (contents.charAt(0)) {
-            case 'a':
-                displayTV.setText("Pig Latin: " + contents + "way");
+        char a = 'a', e = 'e', i = 'i', o = 'o', u = 'u';
+        int start = 0, firstVowel = 0, end = contents.length();
+
+        for(int x = 0; x < end; x++) {
+            char c = Character.toLowerCase(contents.charAt(x));
+            if(c == a || c == e || c == i || c == o || c == u) {
+                firstVowel = x;
                 break;
-
-            case 'e':
-                displayTV.setText("Pig Latin: " + contents + "way");
-                break;
-
-            case 'i':
-                displayTV.setText("Pig Latin: " + contents + "way");
-                break;
-
-            case 'o':
-                displayTV.setText("Pig Latin: " + contents + "way");
-                break;
-
-            case 'u':
-                displayTV.setText("Pig Latin: " + contents + "way");
-                break;
-
-            default:
-
-                break;
+            }
         }
 
+        if(start != firstVowel) {
+            String startString = contents.substring(firstVowel, end);
+            String endString = contents.substring(start, firstVowel) + "ay";
+            String finalString = startString + endString;
+            displayTV.setText("Pig Latin: " + finalString);
+        }
 
+        else {
+            displayTV.setText("Pig Latin: " + contents + "way");
+        }
     }
+
+
 }
