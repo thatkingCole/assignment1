@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         char a = 'a', e = 'e', i = 'i', o = 'o', u = 'u';
         int start = 0, firstVowel = 0, end = contents.length();
 
+
         for(int x = 0; x < end; x++) {
             char c = Character.toLowerCase(contents.charAt(x));
             if(c == a || c == e || c == i || c == o || c == u) {
@@ -45,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         else {
             displayTV.setText("Pig Latin: " + contents + "way");
         }
+    }
+
+    public void displayClickClear(View v) {
+        Log.d("click", "clear BTN was clicked");
+        TextView displayTV = findViewById(R.id.displayTV);
+        EditText displayET = findViewById(R.id.displayET);
+        displayTV.setText("Pig Latin: ");
+        displayET.setText("");
     }
 
 
